@@ -486,12 +486,7 @@ Reasons:
 # 15. Monetization
 
 ## Price Range
-US$9.99–14.99
-
-Reasoning:
-- short premium indie experience
-- strong creative identity
-- high replayability through discovery
+U$ 00,00
 
 ---
 
