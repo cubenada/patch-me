@@ -1,9 +1,0 @@
-res://scenes/bosses/the_placeholder.tscn::71d228566979a1907d177b7ba48f70ef::1778781903::res://.godot/exported/133200997/export-1d450bea7d4f727797de7c012258694a-the_placeholder.scn
-res://scenes/enemies/basic_enemy.tscn::5968cb4dc927feccc17a37648ea3bf41::1778677037::res://.godot/exported/133200997/export-0ef2428a29e79799f08e34444a94c45b-basic_enemy.scn
-res://scenes/player/player.tscn::97d5a951ee4c27574a6f4ec593d887f8::1778677472::res://.godot/exported/133200997/export-c2c62cb8c73458cd122faf659769dc80-player.scn
-res://scenes/player/projectile.tscn::cfa6d53c8b9102fc0715d91c5cade7b7::1778779692::res://.godot/exported/133200997/export-6674e3843d928ec770b5b2497eb18c84-projectile.scn
-res://scenes/ui/hud.tscn::e3695ae0bd345e3f39bd199cf3e9eef1::1778782564::res://.godot/exported/133200997/export-f26fe175837e58804f1c48b99041ac16-hud.scn
-res://scenes/ui/patch_notes.tscn::7f680dcc6c62579df539d8222e44ff05::1778780425::res://.godot/exported/133200997/export-252952cccdf5b589a3b7b89113699c4f-patch_notes.scn
-res://scenes/world/area_01.tscn::a76ffbf54783fd1cedee1efe4a415235::1778790813::res://.godot/exported/133200997/export-4ca650533c2791fbe8aa26b4df11647d-area_01.scn
-res://scenes/world/chest.tscn::b091929578575fb1729446cb10787008::1778784342::res://.godot/exported/133200997/export-4bcdfbfdeb9e83bbc69bc4f89bcf42b9-chest.scn
-res://scenes/world/main_menu.tscn::9d86677d617fb1a315f8d35a1d8ea5f0::1778794718::res://.godot/exported/133200997/export-d69dc7349882a48ad488ebcaa1309623-main_menu.scn
