@@ -1,0 +1,28 @@
+# Godot cache — auto-gerado, nunca vai pro git
+.godot/
+
+# Builds exportadas
+builds/
+exports/
+*.exe
+*.x86_64
+*.apk
+*.aab
+*.ipa
+*.pck
+*.zip
+
+# Saves locais do jogo (gerados em user://)
+*.cfg
+*.save
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
