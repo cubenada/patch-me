@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dav2wcjmawnfj" path="res://scripts/player/player.gd" id="1_plr"]
 [ext_resource type="Script" uid="uid://dbdcm3epb27c2" path="res://scripts/player/player_attack.gd" id="2_atk"]
-[ext_resource type="Texture2D" uid="uid://din4bm0g2f3xw" path="res://assets/sprites/world/tilemap_packed.png" id="2_gmlin"]
+[ext_resource type="Texture2D" uid="uid://dwsc6i43ga8if" path="res://assets/sprites/world/tilemap_packed.png" id="2_gmlin"]
 
 [sub_resource type="CircleShape2D" id="CS_body"]
 radius = 5.0990195
 
 [sub_resource type="RectangleShape2D" id="RS_attack"]
 size = Vector2(28, 24)
+
 
 [node name="Player" type="CharacterBody2D" unique_id=1192040482]
 collision_layer = 2

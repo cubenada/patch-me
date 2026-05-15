@@ -18,6 +18,7 @@ const HURTBOX_BROKEN_OFFSET := Vector2(36.0, -28.0)
 var hp: int = MAX_HP
 var phase: Phase = Phase.IDLE
 var phase_before_return: Phase = Phase.ONE
+var active: bool = true
 var freeze_timer: float = 0.0
 var attack_timer: float = 1.0
 var spawn_position: Vector2
@@ -41,6 +42,8 @@ func _physics_process(delta: float) -> void:
 func _phase_idle() -> void:
 	velocity = Vector2.ZERO
 	move_and_slide()
+	if not active:
+		return
 	var player := _get_player()
 	if player and global_position.distance_to(player.global_position) <= ACTIVATION_RADIUS:
 		phase = Phase.ONE

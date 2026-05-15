@@ -4,6 +4,8 @@ const DIALOGUE := preload("res://scenes/ui/dialogue.tscn")
 
 func _ready() -> void:
 	$Boss.boss_defeated.connect(_on_boss_defeated)
+	if not GameState.boss_intro_shown:
+		$Boss.active = false
 	if not GameState.intro_shown:
 		_show_intro()
 	_setup_boss_trigger()
@@ -28,10 +30,10 @@ func _setup_boss_trigger() -> void:
 	trigger.collision_mask = 2
 	var shape := CollisionShape2D.new()
 	var rect := RectangleShape2D.new()
-	rect.size = Vector2(200, 400)
+	rect.size = Vector2(352, 224)
 	shape.shape = rect
 	trigger.add_child(shape)
-	trigger.position = Vector2(800, 180)
+	trigger.position = Vector2(944, 160)
 	add_child(trigger)
 	trigger.body_entered.connect(func(body: Node2D) -> void:
 		if body.is_in_group("player"):
@@ -43,6 +45,7 @@ func _show_boss_intro() -> void:
 	GameState.boss_intro_shown = true
 	var dlg := DIALOGUE.instantiate()
 	add_child(dlg)
+	dlg.finished.connect(func() -> void: $Boss.active = true)
 	dlg.setup([
 		"[ENCOUNTER] Hostile entity detected.",
 		"[LOG] Name: \"The Placeholder\"",

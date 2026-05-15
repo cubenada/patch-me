@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://h7ha7qsr154x"]
 
 [ext_resource type="Script" uid="uid://cql10yi7670ne" path="res://scripts/world/chest.gd" id="1_chest"]
-[ext_resource type="Texture2D" uid="uid://din4bm0g2f3xw" path="res://assets/sprites/world/tilemap_packed.png" id="2_tex"]
+[ext_resource type="Texture2D" uid="uid://dwsc6i43ga8if" path="res://assets/sprites/world/tilemap_packed.png" id="2_tex"]
 
 [sub_resource type="RectangleShape2D" id="RS_chest"]
 size = Vector2(20, 18)
@@ -14,7 +14,7 @@ script = ExtResource("1_chest")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=705287924]
 texture = ExtResource("2_tex")
 region_enabled = true
-region_rect = Rect2(80, 112, 16, 16)
+region_rect = Rect2(80, 113, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1442141450]
 shape = SubResource("RS_chest")

@@ -5,7 +5,8 @@ enum State { IDLE, CHASE, RETURN, COOLDOWN, KNOCKBACK }
 const SPEED := 80.0
 const ACTIVATION_RADIUS := 180.0
 const LEASH_RADIUS := 300.0
-const DAMAGE_COOLDOWN := 1.0
+const DAMAGE_COOLDOWN := 1.5
+const CONTACT_DISTANCE := 14.0
 const DAMAGE_ZONE_BROKEN_OFFSET := Vector2(50.0, 0.0)
 const MAX_HP := 9
 
@@ -19,10 +20,12 @@ var spawn_position: Vector2
 var cooldown_timer: float = 0.0
 var knockback_dir: Vector2 = Vector2.ZERO
 var knockback_timer: float = 0.0
+var player_in_zone: bool = false
 
 func _ready() -> void:
 	spawn_position = global_position
 	damage_zone.body_entered.connect(_on_damage_zone_body_entered)
+	damage_zone.body_exited.connect(_on_damage_zone_body_exited)
 	_apply_hitbox_state()
 	if not GameState.hitbox_accurate:
 		hurt_box.position = Vector2(-30.0, 0.0)
@@ -49,9 +52,13 @@ func _physics_process(delta: float) -> void:
 			if lost:
 				state = State.RETURN
 			else:
-				var dir := (player.global_position - global_position).normalized()
-				velocity = dir * SPEED
-				sprite.flip_h = dir.x < 0.0
+				var dist := global_position.distance_to(player.global_position)
+				if dist > CONTACT_DISTANCE:
+					var dir := (player.global_position - global_position).normalized()
+					velocity = dir * SPEED
+					sprite.flip_h = dir.x < 0.0
+				else:
+					velocity = Vector2.ZERO
 				_apply_hitbox_state()
 
 		State.RETURN:
@@ -67,8 +74,12 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector2.ZERO
 			cooldown_timer -= delta
 			if cooldown_timer <= 0.0:
-				var in_range := player and global_position.distance_to(player.global_position) <= ACTIVATION_RADIUS
-				state = State.CHASE if in_range else State.IDLE
+				if player_in_zone and player:
+					player.call("take_damage", 1)
+					cooldown_timer = DAMAGE_COOLDOWN
+				else:
+					var in_range := player and global_position.distance_to(player.global_position) <= ACTIVATION_RADIUS
+					state = State.CHASE if in_range else State.IDLE
 
 		State.KNOCKBACK:
 			knockback_timer -= delta
@@ -87,9 +98,14 @@ func _apply_hitbox_state() -> void:
 
 func _on_damage_zone_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
+		player_in_zone = true
 		body.call("take_damage", 1)
 		state = State.COOLDOWN
 		cooldown_timer = DAMAGE_COOLDOWN
+
+func _on_damage_zone_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		player_in_zone = false
 
 func take_damage(amount: int) -> void:
 	health -= amount
