@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cg11ob6q8erno"
+path="res://.godot/imported/Mr.Cat - Bit Piano Music.mp3-fb50c818a32c969eb1f4952db95d0e36.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/Mr.Cat - Bit Piano Music.mp3"
+dest_files=["res://.godot/imported/Mr.Cat - Bit Piano Music.mp3-fb50c818a32c969eb1f4952db95d0e36.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

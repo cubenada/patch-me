@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://pm_patch"]
+
+[ext_resource type="Script" path="res://scripts/ui/patch_notes.gd" id="1_patch"]
+
+[node name="PatchNotes" type="CanvasLayer"]
+script = ExtResource("1_patch")
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.05, 0.05, 1.0)
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 20.0
+offset_right = -32.0
+offset_bottom = -20.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 16.0
+offset_right = -20.0
+offset_bottom = -16.0
+bbcode_enabled = true
+scroll_active = false
+theme_override_font_sizes/normal_font_size = 11

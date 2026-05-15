@@ -549,15 +549,104 @@ Instead:
 
 # 19. MVP (Minimum Viable Product)
 
-A playable prototype should include:
-- one area
-- one boss
-- intentionally broken hitboxes
-- post-boss “fix”
-- visible polish evolution
+## Goal
+Prove that the core gimmick works: a game that feels intentionally broken, then visibly improves after a boss fight — and that improvement feels satisfying.
 
-If this alone feels satisfying:
-the project is viable.
+Everything outside this section is out of scope until the MVP is complete and feels good.
+
+---
+
+## Scope: What Is In MVP
+
+### Player
+- Walk and jump (basic platformer movement)
+- Single attack: sword swing with a visible swing animation
+- Weak dash (short range, no invincibility frames — intentionally bad)
+- Health: 3 or 4 hit points, represented by an ugly placeholder UI (pixel hearts or a raw number)
+- No death screen required — respawn at area start is enough
+
+### Area 1 — Collision Plains
+- One linear level: platforms, gaps, a path to the boss
+- 3–5 basic enemies: they walk back and forth, deal contact damage
+- All enemy hitboxes are visually offset — their actual damage zone does not match their sprite
+- Player attack hitbox is also offset — visually the sword swings one place, damage lands elsewhere
+- No puzzles, no secrets, no collectibles
+
+### Boss — The Placeholder
+- Large red cube sprite with a visible red outline showing the real hitbox (clearly misaligned)
+- Phase 1: boss moves toward player and attacks; attacks have no visual telegraph — damage appears from an offset zone
+- Phase 2 (50% HP): boss freezes entirely for 5 seconds, simulating a crash; player must hit it during this window
+- Phase 3 (25% HP): boss hitbox briefly flashes visible on every attack
+- Death: sprite and hitbox snap into alignment with a click/pop sound, then boss disappears
+
+### Post-Boss: Patch Notes Screen
+- Screen fades to black, then a terminal-style interface appears
+- Patch notes for v0.2.0 scroll up (see Section 22 for exact format)
+- Duration: 15–20 seconds, cannot be skipped
+- After notes finish, the level reloads
+
+### Post-Boss: The Fix
+After the patch notes, the game visibly changes:
+- Player attack hitbox now matches the sword swing animation exactly
+- Enemy hitboxes align with their sprites
+- A small impact particle appears when attacks connect
+- 2-frame hit stop on successful hits (the world pauses briefly — this is the most important feel improvement)
+
+---
+
+## Scope: What Is NOT In MVP
+
+These are explicitly excluded. Do not build them yet.
+
+- Hub world (“The Project Folder”)
+- The Console (narrative guide)
+- Areas 2–5 and their bosses
+- Dash with invincibility frames
+- Music (use free placeholder audio)
+- Sound design beyond basic SFX (hit, jump, death)
+- Dialogue or story text
+- Main menu (a “Press Start” screen is enough)
+- Save system
+- Settings menu
+- Any content referencing the Inner Critic or final boss
+
+---
+
+## Technical Checklist
+
+These are the systems that must work before MVP is considered done:
+
+- [ ] Player can move, jump, attack, and dash
+- [ ] Player takes damage on contact with enemies and boss
+- [ ] Player has a health value that decreases and ends the run at zero
+- [ ] Enemies have a patrol loop and deal damage on contact
+- [ ] Player attack deals damage to enemies within the (offset) hitbox
+- [ ] Boss loads as a separate scene with its own state machine (Idle, Phase1, Phase2, Phase3, Dead)
+- [ ] Boss phases trigger at correct HP thresholds
+- [ ] Boss freeze (Phase 2) works as a timed window
+- [ ] Post-boss scene transition triggers on boss death
+- [ ] Patch Notes screen displays correctly and auto-advances
+- [ ] After patch notes, hitbox values are updated globally (accurate hitboxes from this point on)
+- [ ] Impact particles appear on hit (post-patch only)
+- [ ] Hit stop (2 frames) works on hit (post-patch only)
+- [ ] The broken state and the fixed state are both clearly distinguishable
+
+---
+
+## Success Criteria
+
+The MVP is viable if a first-time player (or yourself after a break):
+
+1. Feels confused or frustrated by the broken hitboxes — but laughs, not quits
+2. Understands (without being told) that something is wrong with the game
+3. Finds and defeats the boss using the broken system
+4. Reads the patch notes and understands what just changed
+5. Plays 30 seconds post-patch and notices the difference in feel
+
+If all five happen: **ship the full game.**
+
+If step 1 causes the player to quit instead of laugh: the broken state needs tuning.
+If step 5 doesn't feel different: the fix needs more impact.
 
 ---
 

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://d3s3s6kahl6eb"]
+
+[ext_resource type="Script" uid="uid://bt0yxqxg5kubv" path="res://scripts/enemies/basic_enemy.gd" id="1_enemy"]
+[ext_resource type="Texture2D" uid="uid://din4bm0g2f3xw" path="res://assets/sprites/world/tilemap_packed.png" id="2_8xi43"]
+
+[sub_resource type="RectangleShape2D" id="RS_body"]
+size = Vector2(24, 32)
+
+[sub_resource type="RectangleShape2D" id="RS_hurt"]
+size = Vector2(28, 36)
+
+[sub_resource type="RectangleShape2D" id="RS_dmg"]
+size = Vector2(32, 36)
+
+[node name="BasicEnemy" type="CharacterBody2D" unique_id=330175459]
+collision_layer = 4
+script = ExtResource("1_enemy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=590951266]
+texture = ExtResource("2_8xi43")
+region_enabled = true
+region_rect = Rect2(16, 160, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1027329483]
+shape = SubResource("RS_body")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=527565390]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=2050411031]
+shape = SubResource("RS_hurt")
+
+[node name="DamageZone" type="Area2D" parent="." unique_id=1457294711]
+position = Vector2(50, 0)
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageZone" unique_id=372640793]
+shape = SubResource("RS_dmg")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cbchx752a6dma"
+path="res://.godot/imported/Pulse Multi Attack.mp3-b70714cb3a78e69ea9c4078d5bd1d1a6.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/extras/Pulse Multi Attack.mp3"
+dest_files=["res://.godot/imported/Pulse Multi Attack.mp3-b70714cb3a78e69ea9c4078d5bd1d1a6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

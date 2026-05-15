@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://b1gneikihidtl"]
+
+[ext_resource type="Script" uid="uid://cgsku7j02gpxh" path="res://scripts/world/options_menu.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dbs1vdohnx7rp" path="res://assets/sprites/ui/options_menu_v2.png" id="2_img"]
+
+[node name="OptionsMenu" type="Control" unique_id=1507816189]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="." unique_id=454478010]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.04, 0.04, 0.06, 1)
+
+[node name="MenuImage" type="TextureRect" parent="." unique_id=1126922140]
+texture_filter = 1
+layout_mode = 0
+offset_left = 200.0
+offset_right = 440.0
+offset_bottom = 360.0
+texture = ExtResource("2_img")
+expand_mode = 1
+
+[node name="FullscreenBtn" type="Button" parent="." unique_id=1681573396]
+layout_mode = 0
+offset_left = 361.0
+offset_top = 104.0
+offset_right = 413.0
+offset_bottom = 134.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="ResLeftBtn" type="Button" parent="." unique_id=2076905992]
+layout_mode = 0
+offset_left = 322.0
+offset_top = 142.0
+offset_right = 342.0
+offset_bottom = 165.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="ResRightBtn" type="Button" parent="." unique_id=1565522891]
+layout_mode = 0
+offset_left = 388.0
+offset_top = 142.0
+offset_right = 407.0
+offset_bottom = 165.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="MasterLeftBtn" type="Button" parent="." unique_id=750814492]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 215.0
+offset_right = 335.0
+offset_bottom = 237.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="MasterRightBtn" type="Button" parent="." unique_id=1654408963]
+layout_mode = 0
+offset_left = 387.0
+offset_top = 216.0
+offset_right = 406.0
+offset_bottom = 238.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="MusicLeftBtn" type="Button" parent="." unique_id=290612904]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 245.0
+offset_right = 335.0
+offset_bottom = 267.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="MusicRightBtn" type="Button" parent="." unique_id=902100778]
+layout_mode = 0
+offset_left = 388.0
+offset_top = 245.0
+offset_right = 407.0
+offset_bottom = 267.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="SFXLeftBtn" type="Button" parent="." unique_id=948464751]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 274.0
+offset_right = 335.0
+offset_bottom = 295.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="SFXRightBtn" type="Button" parent="." unique_id=870218340]
+layout_mode = 0
+offset_left = 388.0
+offset_top = 274.0
+offset_right = 407.0
+offset_bottom = 295.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="BackBtn" type="Button" parent="." unique_id=254419835]
+layout_mode = 0
+offset_left = 263.0
+offset_top = 312.0
+offset_right = 380.0
+offset_bottom = 340.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="FullscreenLabel" type="Label" parent="." unique_id=1031458865]
+layout_mode = 0
+offset_left = 313.0
+offset_top = 104.0
+offset_right = 365.0
+offset_bottom = 134.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 7
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResLabel" type="Label" parent="." unique_id=400423278]
+layout_mode = 0
+offset_left = 343.0
+offset_top = 141.0
+offset_right = 391.0
+offset_bottom = 164.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 6
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MasterLabel" type="Label" parent="." unique_id=629682868]
+layout_mode = 0
+offset_left = 337.0
+offset_top = 216.0
+offset_right = 385.0
+offset_bottom = 238.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 7
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicLabel" type="Label" parent="." unique_id=1758008001]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 245.0
+offset_right = 384.0
+offset_bottom = 267.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 7
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXLabel" type="Label" parent="." unique_id=185702699]
+layout_mode = 0
+offset_left = 338.0
+offset_top = 274.0
+offset_right = 386.0
+offset_bottom = 295.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 7
+horizontal_alignment = 1
+vertical_alignment = 1

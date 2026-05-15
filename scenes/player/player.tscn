@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://pwk4h3i4eah4"]
+
+[ext_resource type="Script" uid="uid://dav2wcjmawnfj" path="res://scripts/player/player.gd" id="1_plr"]
+[ext_resource type="Script" uid="uid://dbdcm3epb27c2" path="res://scripts/player/player_attack.gd" id="2_atk"]
+[ext_resource type="Texture2D" uid="uid://din4bm0g2f3xw" path="res://assets/sprites/world/tilemap_packed.png" id="2_gmlin"]
+
+[sub_resource type="CircleShape2D" id="CS_body"]
+radius = 5.0990195
+
+[sub_resource type="RectangleShape2D" id="RS_attack"]
+size = Vector2(28, 24)
+
+[node name="Player" type="CharacterBody2D" unique_id=1192040482]
+collision_layer = 2
+collision_mask = 21
+script = ExtResource("1_plr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1104947566]
+texture = ExtResource("2_gmlin")
+region_enabled = true
+region_rect = Rect2(32, 129, 15, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1093795858]
+shape = SubResource("CS_body")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1427399101]
+
+[node name="PlayerAttack" type="Area2D" parent="." unique_id=627072640]
+collision_layer = 32
+collision_mask = 8
+monitoring = false
+script = ExtResource("2_atk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerAttack" unique_id=1850771896]
+position = Vector2(20, 0)
+shape = SubResource("RS_attack")
+
+[node name="SlashVisual" type="Polygon2D" parent="PlayerAttack" unique_id=564055454]
+visible = false
+color = Color(1, 0.95, 0.5, 0.85)
+polygon = PackedVector2Array(0, -18, 24, -12, 28, 0, 24, 12, 0, 18)

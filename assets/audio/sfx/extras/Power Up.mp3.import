@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cw3ohnfb0h5tq"
+path="res://.godot/imported/Power Up.mp3-903fb3260f777f5e850e3ab934b47011.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/extras/Power Up.mp3"
+dest_files=["res://.godot/imported/Power Up.mp3-903fb3260f777f5e850e3ab934b47011.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

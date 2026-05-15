@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bdhc5ni8b2s42"]
+
+[ext_resource type="Script" uid="uid://b7sub2f1w0vvw" path="res://scripts/world/main_menu.gd" id="1_menu"]
+[ext_resource type="Texture2D" uid="uid://c744kxefrlht6" path="res://assets/sprites/ui/mainmenu.jpg" id="2_bg"]
+
+[node name="MainMenu" type="Control" unique_id=1522407676]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_menu")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1129601298]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.04, 0.04, 0.06, 1)
+
+[node name="MenuImage" type="TextureRect" parent="." unique_id=466568792]
+texture_filter = 1
+layout_mode = 0
+offset_left = 200.0
+offset_right = 440.0
+offset_bottom = 360.0
+texture = ExtResource("2_bg")
+expand_mode = 1
+
+[node name="NewGameBtn" type="Button" parent="." unique_id=593579531]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 160.0
+offset_right = 392.0
+offset_bottom = 200.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="LoadGameBtn" type="Button" parent="." unique_id=318789424]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 205.0
+offset_right = 394.0
+offset_bottom = 247.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="OptionsBtn" type="Button" parent="." unique_id=1147600040]
+layout_mode = 0
+offset_left = 251.0
+offset_top = 252.0
+offset_right = 395.0
+offset_bottom = 291.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="ExitBtn" type="Button" parent="." unique_id=216967913]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 301.0
+offset_right = 392.0
+offset_bottom = 334.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[connection signal="pressed" from="NewGameBtn" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="LoadGameBtn" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="OptionsBtn" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="ExitBtn" to="." method="_on_exit_pressed"]

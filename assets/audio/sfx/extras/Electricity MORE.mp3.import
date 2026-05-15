@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cohe23ktsrs4m"
+path="res://.godot/imported/Electricity MORE.mp3-f6fcb6fefae29a0d7f6d9de0440faa72.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/extras/Electricity MORE.mp3"
+dest_files=["res://.godot/imported/Electricity MORE.mp3-f6fcb6fefae29a0d7f6d9de0440faa72.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
