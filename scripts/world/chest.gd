@@ -2,8 +2,6 @@ extends Area2D
 
 @export var weapon_id: int = 0
 
-# Ajuste as coordenadas abaixo conforme o tilemap_packed.png.
-# Abra o atlas no editor Godot e veja o Rect2 de cada frame do baú.
 const FRAME_RECTS: Array[Rect2] = [
 	Rect2(80, 112, 16, 16),   # fechado
 	Rect2(96, 112, 16, 16),   # levemente aberto

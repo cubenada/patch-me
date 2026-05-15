@@ -4,6 +4,7 @@ const SFX_PATH := "res://assets/audio/sfx/"
 
 var _players: Dictionary = {}
 var _music: AudioStreamPlayer
+var _music_path: String = ""
 
 func _ready() -> void:
 	_setup_buses()
@@ -84,13 +85,14 @@ func _setup_buses() -> void:
 func play_music(path: String, volume_db: float = 0.0) -> void:
 	if not ResourceLoader.exists(path):
 		return
-	if _music.playing and _music.stream == load(path):
+	if _music.playing and _music_path == path:
 		return
 	var stream := load(path)
 	if stream is AudioStreamMP3:
 		stream.loop = true
 	_music.stream = stream
 	_music.volume_db = volume_db
+	_music_path = path
 	_music.play()
 
 func stop_music() -> void:

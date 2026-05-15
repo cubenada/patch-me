@@ -1,6 +1,6 @@
 extends Node
 
-var patch_version: String = "v0.1.0"
+var patch_version: String = "v0.2.0"
 var hitbox_accurate: bool = true
 var has_impact_particles: bool = true
 var has_hitstop: bool = true
@@ -25,7 +25,7 @@ func apply_patch_v020() -> void:
 	patch_version = "v0.2.0"
 
 func reset() -> void:
-	patch_version = "v0.1.0"
+	patch_version = "v0.2.0"
 	hitbox_accurate = true
 	has_impact_particles = true
 	has_hitstop = true
@@ -54,6 +54,8 @@ func save_game(scene: String, player_pos: Vector2, player_health: int) -> void:
 	cfg.set_value("state", "wu0", weapons_unlocked[0])
 	cfg.set_value("state", "wu1", weapons_unlocked[1])
 	cfg.set_value("state", "wu2", weapons_unlocked[2])
+	cfg.set_value("state", "intro_shown", intro_shown)
+	cfg.set_value("state", "boss_intro_shown", boss_intro_shown)
 	cfg.save("user://save.cfg")
 
 func load_game() -> bool:
@@ -77,13 +79,21 @@ func load_game() -> bool:
 	weapons_unlocked[0] = cfg.get_value("state", "wu0", false)
 	weapons_unlocked[1] = cfg.get_value("state", "wu1", false)
 	weapons_unlocked[2] = cfg.get_value("state", "wu2", false)
+	intro_shown = cfg.get_value("state", "intro_shown", false)
+	boss_intro_shown = cfg.get_value("state", "boss_intro_shown", false)
 	is_loading_save = true
 	return true
 
 func has_save() -> bool:
 	return FileAccess.file_exists("user://save.cfg")
 
+var _hitstop_active: bool = false
+
 func do_hitstop() -> void:
+	if _hitstop_active:
+		return
+	_hitstop_active = true
 	Engine.time_scale = 0.0
 	await get_tree().create_timer(0.033, true, false, true).timeout
 	Engine.time_scale = 1.0
+	_hitstop_active = false

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d3s3s6kahl6eb"]
 
 [ext_resource type="Script" uid="uid://bt0yxqxg5kubv" path="res://scripts/enemies/basic_enemy.gd" id="1_enemy"]
-[ext_resource type="Texture2D" uid="uid://din4bm0g2f3xw" path="res://assets/sprites/world/tilemap_packed.png" id="2_8xi43"]
+[ext_resource type="Texture2D" uid="uid://dwsc6i43ga8if" path="res://assets/sprites/world/tilemap_packed.png" id="2_8xi43"]
 
 [sub_resource type="RectangleShape2D" id="RS_body"]
 size = Vector2(24, 32)

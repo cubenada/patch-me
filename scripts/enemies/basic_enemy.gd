@@ -23,6 +23,7 @@ var knockback_timer: float = 0.0
 var player_in_zone: bool = false
 
 func _ready() -> void:
+	add_to_group("enemies")
 	spawn_position = global_position
 	damage_zone.body_entered.connect(_on_damage_zone_body_entered)
 	damage_zone.body_exited.connect(_on_damage_zone_body_exited)

@@ -82,6 +82,7 @@ func _apply_settings() -> void:
 		root.mode = Window.MODE_FULLSCREEN
 	else:
 		root.mode = Window.MODE_WINDOWED
+		root.size = RESOLUTIONS[res_index]
 
 	var master_idx := AudioServer.get_bus_index("Master")
 	var music_idx := AudioServer.get_bus_index("Music")
