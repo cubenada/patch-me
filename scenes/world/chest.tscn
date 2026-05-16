@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://h7ha7qsr154x"]
 
 [ext_resource type="Script" uid="uid://cql10yi7670ne" path="res://scripts/world/chest.gd" id="1_chest"]
-[ext_resource type="Texture2D" uid="uid://dwsc6i43ga8if" path="res://assets/sprites/world/tilemap_packed.png" id="2_tex"]
+[ext_resource type="Texture2D" uid="uid://c5ut501m4b0mt" path="res://assets/Area_01/sprites/world/castle-kenny-tilemap.png" id="2_tex"]
 
 [sub_resource type="RectangleShape2D" id="RS_chest"]
 size = Vector2(20, 18)

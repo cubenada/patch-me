@@ -1,8 +1,8 @@
 [gd_resource type="TileSet" format=3 uid="uid://dnqwd2eqg0t0t"]
 
-[ext_resource type="Texture2D" uid="uid://dwsc6i43ga8if" path="res://assets/sprites/world/tilemap_packed.png" id="1_hboec"]
-[ext_resource type="Texture2D" uid="uid://crp5pr3018dhc" path="res://assets/third-party/kenney_tiny-town/Tilemap/tilemap_packed.png" id="2_8qof7"]
-[ext_resource type="Texture2D" uid="uid://btmjfbtpaqr1k" path="res://assets/third-party/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tilemap/tilemap_packed.png" id="3_fdgow"]
+[ext_resource type="Texture2D" uid="uid://c5ut501m4b0mt" path="res://assets/Area_01/sprites/world/castle-kenny-tilemap.png" id="1_hboec"]
+[ext_resource type="Texture2D" uid="uid://ck57pr1d0k8sy" path="res://assets/Area_01/sprites/world/tinytown-kenny-tileset.png" id="2_8qof7"]
+[ext_resource type="Texture2D" uid="uid://3pvemkfs4llr" path="res://assets/Area_01/sprites/world/desert-kenny-tileset.png" id="3_fdgow"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d3oim"]
 texture = ExtResource("1_hboec")

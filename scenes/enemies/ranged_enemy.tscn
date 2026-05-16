@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://coialwpt6r4rl"]
+
+[ext_resource type="Script" uid="uid://dwp67op62qvci" path="res://scripts/enemies/ranged_enemy.gd" id="1_re"]
+[ext_resource type="Texture2D" uid="uid://c5ut501m4b0mt" path="res://assets/Area_01/sprites/world/castle-kenny-tilemap.png" id="2_tex"]
+
+[sub_resource type="CircleShape2D" id="CS_body"]
+radius = 6.0
+
+[sub_resource type="RectangleShape2D" id="RS_hurt"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RS_dmg"]
+size = Vector2(10, 10)
+
+[node name="RangedEnemy" type="CharacterBody2D" unique_id=2072852763]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_re")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1598712147]
+texture_filter = 1
+texture = ExtResource("2_tex")
+region_enabled = true
+region_rect = Rect2(48, 145, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=689705270]
+shape = SubResource("CS_body")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=68937859]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=332027917]
+shape = SubResource("RS_hurt")
+
+[node name="DamageZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageZone"]
+shape = SubResource("RS_dmg")

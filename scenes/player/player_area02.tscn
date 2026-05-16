@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://c60ih8dywbxvw"]
+
+[ext_resource type="Script" uid="uid://dav2wcjmawnfj" path="res://scripts/player/player.gd" id="1_tysp8"]
+[ext_resource type="Texture2D" uid="uid://vbqbvpgnf178" path="res://assets/Area_02/sprites/player/Soldier/Soldier-Idle.png" id="2_tysp8"]
+[ext_resource type="Script" uid="uid://dbdcm3epb27c2" path="res://scripts/player/player_attack.gd" id="3_elkhj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tesk"]
+atlas = ExtResource("2_tysp8")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elkhj"]
+atlas = ExtResource("2_tysp8")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ice3a"]
+atlas = ExtResource("2_tysp8")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35ygw"]
+atlas = ExtResource("2_tysp8")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmk2b"]
+atlas = ExtResource("2_tysp8")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wuoul"]
+atlas = ExtResource("2_tysp8")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tysp8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tesk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elkhj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ice3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35ygw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmk2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wuoul")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CS_body"]
+radius = 5.0990195
+
+[sub_resource type="RectangleShape2D" id="RS_attack"]
+size = Vector2(28, 24)
+
+[node name="Player" type="CharacterBody2D" unique_id=1192040482]
+collision_layer = 2
+collision_mask = 21
+script = ExtResource("1_tysp8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1742624828]
+sprite_frames = SubResource("SpriteFrames_tysp8")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1093795858]
+shape = SubResource("CS_body")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1427399101]
+
+[node name="PlayerAttack" type="Area2D" parent="." unique_id=627072640]
+collision_layer = 32
+collision_mask = 8
+monitoring = false
+script = ExtResource("3_elkhj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerAttack" unique_id=1850771896]
+position = Vector2(20, 0)
+shape = SubResource("RS_attack")
+
+[node name="WindLines" type="Node2D" parent="PlayerAttack" unique_id=564055454]
+visible = false
+
+[node name="Line1" type="Line2D" parent="PlayerAttack/WindLines" unique_id=1513568916]
+points = PackedVector2Array(5, -7, 22, -7)
+width = 1.5
+default_color = Color(1, 1, 1, 0.9)
+
+[node name="Line2" type="Line2D" parent="PlayerAttack/WindLines" unique_id=2045748011]
+points = PackedVector2Array(2, 0, 28, 0)
+width = 2.0
+default_color = Color(1, 1, 1, 0.9)
+
+[node name="Line3" type="Line2D" parent="PlayerAttack/WindLines" unique_id=977121199]
+points = PackedVector2Array(5, 7, 20, 7)
+width = 1.5
+default_color = Color(1, 1, 1, 0.9)

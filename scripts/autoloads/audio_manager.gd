@@ -5,6 +5,8 @@ const SFX_PATH := "res://assets/audio/sfx/"
 var _players: Dictionary = {}
 var _music: AudioStreamPlayer
 var _music_path: String = ""
+var _music_loop: bool = false
+var _music_tween: Tween = null
 
 func _ready() -> void:
 	_setup_buses()
@@ -12,6 +14,7 @@ func _ready() -> void:
 	_music = AudioStreamPlayer.new()
 	_music.bus = "Music"
 	add_child(_music)
+	_music.finished.connect(_on_music_finished)
 	_load("attack",     "attack.wav")
 	_load("hit",        "hit.wav")
 	_load("player_hurt","player_hurt.wav")
@@ -25,6 +28,7 @@ func _ready() -> void:
 	_load("attack_w0",  "Laser_Shoot.wav")
 	_load("attack_w1",  "Laser_Shoot5.wav")
 	_load("attack_w2",  "Laser_Shoot3.wav")
+	_load("punch",      "07_human_atk_sword_1.wav")
 
 func play(sound_name: String) -> void:
 	if not _players.has(sound_name):
@@ -83,20 +87,59 @@ func _setup_buses() -> void:
 			AudioServer.set_bus_send(idx, "Master")
 
 func play_music(path: String, volume_db: float = 0.0) -> void:
-	if not ResourceLoader.exists(path):
-		return
 	if _music.playing and _music_path == path:
 		return
-	var stream := load(path)
-	if stream is AudioStreamMP3:
-		stream.loop = true
+	var stream := load(path) as AudioStream
+	if stream == null:
+		return
+	if _music_tween:
+		_music_tween.kill()
+		_music_tween = null
 	_music.stream = stream
 	_music.volume_db = volume_db
 	_music_path = path
+	_music_loop = true
 	_music.play()
 
-func stop_music() -> void:
+func play_music_fade_in(path: String, fade_duration: float = 1.5) -> void:
+	if _music.playing and _music_path == path:
+		return
+	var stream := load(path) as AudioStream
+	if stream == null:
+		return
+	if _music_tween:
+		_music_tween.kill()
+		_music_tween = null
 	_music.stop()
+	_music.stream = stream
+	_music.volume_db = -40.0
+	_music_path = path
+	_music_loop = true
+	_music.play()
+	_music_tween = create_tween()
+	_music_tween.tween_property(_music, "volume_db", 0.0, fade_duration)
+
+func fade_out_music(fade_duration: float = 1.0) -> void:
+	if not _music.playing:
+		return
+	if _music_tween:
+		_music_tween.kill()
+	_music_tween = create_tween()
+	_music_tween.tween_property(_music, "volume_db", -40.0, fade_duration)
+	_music_tween.tween_callback(stop_music)
+
+func stop_music() -> void:
+	if _music_tween:
+		_music_tween.kill()
+		_music_tween = null
+	_music_loop = false
+	_music_path = ""
+	_music.volume_db = 0.0
+	_music.stop()
+
+func _on_music_finished() -> void:
+	if _music_loop and _music_path != "":
+		_music.play()
 
 func _load(key: String, file: String) -> void:
 	var p := AudioStreamPlayer.new()

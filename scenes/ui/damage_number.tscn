@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://damage_number_v1"]
+
+[ext_resource type="Script" path="res://scripts/ui/damage_number.gd" id="1_dmgnum"]
+
+[node name="DamageNumber" type="Node2D"]
+script = ExtResource("1_dmgnum")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -12.0
+offset_top = -8.0
+offset_right = 12.0
+offset_bottom = 8.0
+theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1

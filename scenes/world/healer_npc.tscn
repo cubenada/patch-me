@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c7oififsm21wp"]
+
+[ext_resource type="Script" uid="uid://6hea0y152kr7" path="res://scripts/world/npc.gd" id="1_npc"]
+[ext_resource type="Texture2D" uid="uid://c5ut501m4b0mt" path="res://assets/Area_01/sprites/world/castle-kenny-tilemap.png" id="2_tex"]
+
+[sub_resource type="CircleShape2D" id="CS_interact"]
+radius = 24.0
+
+[node name="HealerNPC" type="Node2D" unique_id=1675700980]
+script = ExtResource("1_npc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1424974771]
+texture = ExtResource("2_tex")
+region_enabled = true
+region_rect = Rect2(48, 129, 16, 16)
+
+[node name="InteractZone" type="Area2D" parent="." unique_id=61835994]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractZone" unique_id=944639081]
+shape = SubResource("CS_interact")
+
+[node name="Prompt" type="Label" parent="." unique_id=827567904]
+offset_left = -8.0
+offset_top = -24.0
+offset_right = -8.0
+offset_bottom = -24.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
+text = "[ E ]"

@@ -40,4 +40,4 @@ func _type_notes() -> void:
 
 func _finish() -> void:
 	GameState.apply_patch_v020()
-	get_tree().change_scene_to_file("res://scenes/world/area_01.tscn")
+	get_tree().change_scene_to_file("res://scenes/world/area_02.tscn")

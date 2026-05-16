@@ -18,7 +18,7 @@ config/name="Patch Me"
 config/description="A game that starts broken and becomes polished as you play."
 run/main_scene="res://scenes/world/main_menu.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://assets/sprites/ui/icon.png"
+config/icon="res://assets/UI/icon.png"
 
 [autoload]
 

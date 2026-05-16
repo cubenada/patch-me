@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cpipe_trap_v1"]
+
+[ext_resource type="Script" path="res://scripts/world/pipe_trap.gd" id="1_pt"]
+
+[node name="PipeTrap" type="Node2D"]
+script = ExtResource("1_pt")

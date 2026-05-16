@@ -9,6 +9,7 @@ const DAMAGE_COOLDOWN := 1.5
 const CONTACT_DISTANCE := 14.0
 const DAMAGE_ZONE_BROKEN_OFFSET := Vector2(50.0, 0.0)
 const MAX_HP := 9
+const DAMAGE_NUMBER := preload("res://scenes/ui/damage_number.tscn")
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var damage_zone: Area2D = $DamageZone
@@ -29,7 +30,7 @@ func _ready() -> void:
 	damage_zone.body_exited.connect(_on_damage_zone_body_exited)
 	_apply_hitbox_state()
 	if not GameState.hitbox_accurate:
-		hurt_box.position = Vector2(-30.0, 0.0)
+		hurt_box.position = Vector2(-16.0, 0.0)
 
 func _process(_delta: float) -> void:
 	if velocity.length() > 0:
@@ -111,9 +112,23 @@ func _on_damage_zone_body_exited(body: Node2D) -> void:
 func take_damage(amount: int) -> void:
 	health -= amount
 	queue_redraw()
+	_flash_red()
+	_spawn_damage_number(amount)
 	if health <= 0:
 		AudioManager.play("enemy_die")
 		queue_free()
+
+func _spawn_damage_number(amount: int) -> void:
+	var num := DAMAGE_NUMBER.instantiate()
+	get_tree().current_scene.add_child(num)
+	num.global_position = global_position + Vector2(0.0, -24.0)
+	num.setup(amount)
+
+func _flash_red() -> void:
+	sprite.modulate = Color(1.0, 0.15, 0.15)
+	await get_tree().create_timer(0.15).timeout
+	if is_instance_valid(sprite):
+		sprite.modulate = Color.WHITE
 
 func knockback(dir: Vector2) -> void:
 	knockback_dir = dir

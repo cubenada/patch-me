@@ -1,10 +1,10 @@
 extends Node
 
-var patch_version: String = "v0.2.0"
-var hitbox_accurate: bool = true
-var has_impact_particles: bool = true
-var has_hitstop: bool = true
-var has_clean_audio: bool = true
+var patch_version: String = "v0.1.0"
+var hitbox_accurate: bool = false
+var has_impact_particles: bool = false
+var has_hitstop: bool = false
+var has_clean_audio: bool = false
 
 var current_weapon: int = 0
 var weapons_unlocked: Array[bool] = [false, false, false]
@@ -25,11 +25,11 @@ func apply_patch_v020() -> void:
 	patch_version = "v0.2.0"
 
 func reset() -> void:
-	patch_version = "v0.2.0"
-	hitbox_accurate = true
-	has_impact_particles = true
-	has_hitstop = true
-	has_clean_audio = true
+	patch_version = "v0.1.0"
+	hitbox_accurate = false
+	has_impact_particles = false
+	has_hitstop = false
+	has_clean_audio = false
 	current_weapon = 0
 	weapons_unlocked = [false, false, false]
 	is_loading_save = false

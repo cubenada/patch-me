@@ -186,11 +186,18 @@ When creating new enemies or entities that need to be found globally, add them t
 
 ### Collision layers
 Defined in `project.godot`. Always respect:
-- Layer 1: Player
-- Layer 2: Enemies
-- Layer 3: Walls / Environment
-- Layer 4: Projectiles
-- Layer 5 (bit 16): High ground objects
+- Layer 1 (value 1): Walls / Environment (TileMap)
+- Layer 2 (value 2): Player
+- Layer 3 (value 4): Enemies / Boss bodies
+- Layer 4 (value 8): Enemy projectiles + Enemy hurtboxes
+- Layer 5 (value 16): High ground objects / Enemy damage zones
+- Layer 6 (value 32): Player projectiles / Player hurtbox Area2D
+
+Collision masks:
+- Enemy/boss projectiles: `mask = 3` (walls + player)
+- Player projectiles: `mask = 9` (walls + enemy hurtboxes)
+- Enemy damage zones: `mask = 2` (player only)
+- Area2D interaction triggers: `mask = 2` (player only)
 
 The high ground system (`on_high_ground`) exists so projectiles do not collide with objects on different elevation planes — this is intentional mechanic.
 

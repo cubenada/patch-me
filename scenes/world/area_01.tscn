@@ -1,17 +1,20 @@
 [gd_scene format=4 uid="uid://l5m4sq1b077m"]
 
 [ext_resource type="Script" uid="uid://dmrea25xswnyf" path="res://scripts/world/area_01.gd" id="1_area"]
-[ext_resource type="Texture2D" uid="uid://dwsc6i43ga8if" path="res://assets/sprites/world/tilemap_packed.png" id="2_8vioa"]
-[ext_resource type="Texture2D" uid="uid://btmjfbtpaqr1k" path="res://assets/third-party/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tilemap/tilemap_packed.png" id="2_d3oim"]
+[ext_resource type="Texture2D" uid="uid://c5ut501m4b0mt" path="res://assets/Area_01/sprites/world/castle-kenny-tilemap.png" id="2_8vioa"]
+[ext_resource type="Texture2D" uid="uid://3pvemkfs4llr" path="res://assets/Area_01/sprites/world/desert-kenny-tileset.png" id="2_d3oim"]
 [ext_resource type="PackedScene" uid="uid://pwk4h3i4eah4" path="res://scenes/player/player.tscn" id="2_player"]
 [ext_resource type="PackedScene" uid="uid://d3s3s6kahl6eb" path="res://scenes/enemies/basic_enemy.tscn" id="3_enemy"]
 [ext_resource type="PackedScene" uid="uid://4xuc7fprsct1" path="res://scenes/bosses/the_placeholder.tscn" id="4_boss"]
-[ext_resource type="Texture2D" uid="uid://crp5pr3018dhc" path="res://assets/third-party/kenney_tiny-town/Tilemap/tilemap_packed.png" id="4_lpj23"]
+[ext_resource type="Texture2D" uid="uid://ck57pr1d0k8sy" path="res://assets/Area_01/sprites/world/tinytown-kenny-tileset.png" id="4_lpj23"]
 [ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="5_hud"]
-[ext_resource type="Texture2D" uid="uid://cn4lao7yg6x6j" path="res://assets/third-party/kenney_roguelike-caves-dungeons/Spritesheet/roguelikeDungeon_transparent.png" id="5_lpj23"]
+[ext_resource type="Texture2D" uid="uid://c7h8hp1757jp4" path="res://assets/Area_01/sprites/world/rogue-like-cave-kenny-tileset.png" id="5_lpj23"]
 [ext_resource type="TileSet" uid="uid://dnqwd2eqg0t0t" path="res://assets/tilesets/walls-tileset.tres" id="5_vvycn"]
 [ext_resource type="PackedScene" uid="uid://h7ha7qsr154x" path="res://scenes/world/chest.tscn" id="7_lyfbc"]
 [ext_resource type="Script" uid="uid://xuw4ch7x2x8g" path="res://scripts/player/camera.gd" id="8_cam"]
+[ext_resource type="PackedScene" uid="uid://coialwpt6r4rl" path="res://scenes/enemies/ranged_enemy.tscn" id="11_3g0ww"]
+[ext_resource type="PackedScene" uid="uid://c7oififsm21wp" path="res://scenes/world/healer_npc.tscn" id="12_healer"]
+[ext_resource type="PackedScene" uid="uid://dce4b0ic8efiq" path="res://scenes/world/secret_npc.tscn" id="13_secret"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w8jmx"]
 texture = ExtResource("2_d3oim")
@@ -2236,10 +2239,27 @@ position = Vector2(272, 236)
 [node name="Enemy5" parent="Enemies" unique_id=1443664432 instance=ExtResource("3_enemy")]
 position = Vector2(158, 335)
 
-[node name="Enemy6" parent="Enemies" unique_id=1226314790 instance=ExtResource("3_enemy")]
-position = Vector2(294, 318)
+[node name="RangedEnemy" parent="Enemies" unique_id=1358734209 instance=ExtResource("11_3g0ww")]
+position = Vector2(284, 324)
+
+[node name="RangedEnemy2" parent="Enemies" unique_id=2072852763 instance=ExtResource("11_3g0ww")]
+position = Vector2(382, 233)
+
+[node name="RangedEnemy3" parent="Enemies" unique_id=7250144 instance=ExtResource("11_3g0ww")]
+position = Vector2(1135, -216)
+
+[node name="RangedEnemy4" parent="Enemies" unique_id=2046606037 instance=ExtResource("11_3g0ww")]
+position = Vector2(1087, 225)
 
 [node name="Boss" parent="." unique_id=1090356751 instance=ExtResource("4_boss")]
 position = Vector2(979, 112)
+
+[node name="NPCs" type="Node2D" parent="." unique_id=1224856221]
+
+[node name="HealerNPC" parent="NPCs" unique_id=589379787 instance=ExtResource("12_healer")]
+position = Vector2(256, 872)
+
+[node name="SecretNPC" parent="NPCs" unique_id=1871937761 instance=ExtResource("13_secret")]
+position = Vector2(1561, 328)
 
 [node name="HUD" parent="." unique_id=1891305237 instance=ExtResource("5_hud")]

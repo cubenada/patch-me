@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b1gneikihidtl"]
 
 [ext_resource type="Script" uid="uid://cgsku7j02gpxh" path="res://scripts/world/options_menu.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://dbs1vdohnx7rp" path="res://assets/sprites/ui/options_menu_v2.png" id="2_img"]
+[ext_resource type="Texture2D" uid="uid://bnuigr57ntrx2" path="res://assets/UI/options_menu_v2.png" id="2_img"]
 
 [node name="OptionsMenu" type="Control" unique_id=1507816189]
 layout_mode = 3

@@ -1,12 +1,23 @@
 extends Node2D
 
 const DIALOGUE := preload("res://scenes/ui/dialogue.tscn")
+const BOSS_MUSIC := "res://assets/audio/music/clemente-panchout-mwfup-chaotic-boss.wav"
+const PIPE_TRAP := preload("res://scenes/world/pipe_trap.tscn")
+# Each entry: tilemap cell of the pipe tile + direction the projectile shoots
+const PIPE_TRAPS_DATA: Array = [
+	{"cell": Vector2i(50, 51), "direction": Vector2.DOWN},
+	{"cell": Vector2i(55, 51), "direction": Vector2.DOWN},
+	{"cell": Vector2i(16, 16), "direction": Vector2.DOWN},
+]
+
 const GATE_CELL := Vector2i(33, 36)
 const GATE_TRIGGER_RADIUS := 80.0
 const GATE_ENEMY_RADIUS := 260.0
 
 @onready var _walls: TileMapLayer = $Walls
 @onready var _objects: TileMapLayer = $Objects
+@onready var _healer_npc: Node2D = $NPCs/HealerNPC
+@onready var _secret_npc: Node2D = $NPCs/SecretNPC
 
 const TRAP_DAMAGE_COOLDOWN := 1.0
 
@@ -21,6 +32,7 @@ var _trap_layer_index: int = -1
 
 func _ready() -> void:
 	$Boss.boss_defeated.connect(_on_boss_defeated)
+	$Boss.phase_transition_started.connect(_on_boss_phase_transition)
 	if not GameState.boss_intro_shown:
 		$Boss.active = false
 	if not GameState.intro_shown:
@@ -28,6 +40,39 @@ func _ready() -> void:
 	_setup_boss_trigger()
 	_setup_gate()
 	_find_trap_layer()
+	_spawn_pipe_traps()
+	_setup_npcs()
+
+func _spawn_pipe_traps() -> void:
+	for data: Dictionary in PIPE_TRAPS_DATA:
+		var trap := PIPE_TRAP.instantiate()
+		add_child(trap)
+		trap.global_position = _walls.to_global(_walls.map_to_local(data["cell"] as Vector2i))
+		trap.configure(data["direction"] as Vector2)
+
+func _setup_npcs() -> void:
+	_healer_npc.configure([
+		"Hey. You found me.",
+		"I've been stuck in this area since v0.0.1.",
+		"The developer forgot to write an exit condition for me. Classic.",
+		"I tried submitting a bug report. It got closed as 'won't fix'.",
+		"Anyway. You look like you've taken a hit or two.",
+		"Here. Off the books. Don't tell the system.",
+		"[HP RESTORED]",
+	], true)
+
+	_secret_npc.configure([
+		"Oh. You found me.",
+		"I didn't think anyone would check back here.",
+		"I'm what's left of the design document.",
+		"The developer wrote 47 pages of lore for this world.",
+		"None of it made it into the game.",
+		"This conversation is the only content that survived.",
+		"// TODO: add meaningful NPC dialogue",
+		"That comment is four years old.",
+		"Anyway. Thanks for reading.",
+		"Most players don't make it this far.",
+	], false)
 
 func _process(delta: float) -> void:
 	if _player_near_gate and _gate_source_id != -1:
@@ -94,6 +139,7 @@ func _setup_boss_trigger() -> void:
 
 func _show_boss_intro() -> void:
 	GameState.boss_intro_shown = true
+	AudioManager.play_music_fade_in(BOSS_MUSIC, 2.0)
 	var dlg := DIALOGUE.instantiate()
 	add_child(dlg)
 	dlg.finished.connect(func() -> void: $Boss.active = true)
@@ -155,5 +201,21 @@ func _close_gate() -> void:
 	_gate_open = false
 	_walls.set_cell(GATE_CELL, _gate_source_id, _gate_atlas_coords, _gate_alternative)
 
+func _on_boss_phase_transition() -> void:
+	var dlg := DIALOGUE.instantiate()
+	add_child(dlg)
+	dlg.finished.connect(func() -> void: $Boss.resume_phase_two())
+	dlg.setup([
+		"[LOG] HP below 50%. Running emergency_patch.exe...",
+		"[LOG] Scanning Git history for a fix...",
+		"[LOG] Found it. Some idiot pushed a Phase 2.",
+		"[LOG] That idiot was me.",
+		"[ERROR] Spread shot enabled. Triple projectile. 0.67s cooldown.",
+		"[WARNING] I added this at 2am. I don't remember why.",
+		"[LOG] Good luck. You'll need it.",
+	])
+
 func _on_boss_defeated() -> void:
+	AudioManager.fade_out_music(0.8)
+	await get_tree().create_timer(0.8).timeout
 	get_tree().change_scene_to_file("res://scenes/ui/patch_notes.tscn")
